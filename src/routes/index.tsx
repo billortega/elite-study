@@ -698,26 +698,26 @@ function Vision() {
 
 function WhoStudiesHere() {
   const tracks = [
-    { code: "UPSC", title: "Civil Services IAS/IPS/IFS" },
-    { code: "SSC", title: "CGL · CHSL · MTS · GD" },
-    { code: "BANK", title: "IBPS PO · SBI PO · Clerk" },
-    { code: "RRB", title: "NTPC · Group D · ALP" },
-    { code: "NEET", title: "Medical Entrance" },
-    { code: "JEE", title: "Main & Advanced" },
-    { code: "GATE", title: "Engineering PG" },
-    { code: "CAT", title: "MBA · IIM Entrance" },
-    { code: "NDA", title: "National Defence Academy" },
-    { code: "CDS", title: "Combined Defence" },
-    { code: "CLAT", title: "Law Entrance" },
-    { code: "CUET", title: "Central University Entrance" },
-    { code: "PCS", title: "UP State Services" },
-    { code: "NIMCET", title: "MCA Entrance NIT" },
-    { code: "CTET", title: "Teaching · TET · SUPER TET" },
-    { code: "UP SI", title: "UP Police Sub-Inspector" },
-    { code: "NET", title: "UGC NET · JRF" },
-    { code: "AFCAT", title: "Air Force Entrance" },
-    { code: "JUDICIARY", title: "UP Judicial Services" },
-    { code: "ANY EXAM", title: "Prepare for any goal" },
+    { code: "UPSC", title: "Civil Services IAS/IPS/IFS", slug: "upsc" },
+    { code: "SSC", title: "CGL · CHSL · MTS · GD", slug: "ssc" },
+    { code: "BANK", title: "IBPS PO · SBI PO · Clerk", slug: "any" },
+    { code: "RRB", title: "NTPC · Group D · ALP", slug: "rrb" },
+    { code: "NEET", title: "Medical Entrance", slug: "neet" },
+    { code: "JEE", title: "Main & Advanced", slug: "jee" },
+    { code: "GATE", title: "Engineering PG", slug: "any" },
+    { code: "CAT", title: "MBA · IIM Entrance", slug: "any" },
+    { code: "NDA", title: "National Defence Academy", slug: "nda" },
+    { code: "CDS", title: "Combined Defence", slug: "any" },
+    { code: "CLAT", title: "Law Entrance", slug: "any" },
+    { code: "CUET", title: "Central University Entrance", slug: "any" },
+    { code: "PCS", title: "UP State Services", slug: "any" },
+    { code: "NIMCET", title: "MCA Entrance NIT", slug: "nimcet" },
+    { code: "CTET", title: "Teaching · TET · SUPER TET", slug: "any" },
+    { code: "UP SI", title: "UP Police Sub-Inspector", slug: "upsi" },
+    { code: "NET", title: "UGC NET · JRF", slug: "any" },
+    { code: "AFCAT", title: "Air Force Entrance", slug: "afcat" },
+    { code: "JUDICIARY", title: "UP Judicial Services", slug: "judiciary" },
+    { code: "ANY EXAM", title: "Prepare for any goal", slug: "any" },
   ];
   return (
     <section className="py-28 md:py-36">
@@ -740,11 +740,9 @@ function WhoStudiesHere() {
             const isAny = t.code === "ANY EXAM";
             return (
               <Reveal key={t.code} delay={i * 0.025} className={isAny ? "col-span-2 sm:col-span-3 md:col-span-2" : ""}>
-                <motion.a
-                  href="#contact"
-                  whileHover={{ y: -4, scale: 1.01 }}
-                  transition={{ duration: 0.25, ease }}
-                  className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border p-5 md:p-6 transition-colors ${
+                <Link
+                  to={`/exams/${t.slug}`}
+                  className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border p-5 md:p-6 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] ${
                     isAny
                       ? "border-accent/30 bg-accent/8 hover:border-accent/50 hover:bg-accent/12"
                       : "border-border bg-card hover:border-accent/25"
@@ -763,7 +761,7 @@ function WhoStudiesHere() {
                     </div>
                   </div>
                   <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                </motion.a>
+                </Link>
               </Reveal>
             );
           })}
