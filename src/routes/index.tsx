@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import {
@@ -171,6 +171,7 @@ function Nav() {
     { href: "#pricing", label: "Pricing" },
     { href: "#contact", label: "Contact" },
   ];
+  const examLink = "/exams";
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "py-2" : "py-4"}`}>
       <div className="container-px mx-auto max-w-7xl">
@@ -203,6 +204,12 @@ function Nav() {
                 {l.label}
               </a>
             ))}
+            <Link
+              to={examLink}
+              className="rounded-lg px-3.5 py-2 text-sm text-accent font-medium transition-all hover:bg-accent/10"
+            >
+              All Exams
+            </Link>
           </nav>
 
           {/* CTA */}
@@ -250,6 +257,13 @@ function Nav() {
                   {l.label}
                 </a>
               ))}
+              <Link
+                to={examLink}
+                onClick={() => setOpen(false)}
+                className="flex items-center rounded-xl px-4 py-3 text-sm text-accent font-medium hover:bg-accent/10 transition-colors"
+              >
+                All Exams
+              </Link>
               <div className="mt-2 p-2 pt-0 border-t border-border">
                 <a href="#contact" className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-accent-foreground">
                   Book Free Trial <ArrowRight className="size-4" />
